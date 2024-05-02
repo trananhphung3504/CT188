@@ -1,3 +1,4 @@
+// Chữ chạy màu
 const geth1 = document.querySelector(".content h1");
 const geth12 = document.querySelector(".feature__product-content h1");
 // console.log(geth1);
@@ -38,57 +39,46 @@ setInterval(function () {
   }, 1500);
 }, 1500);
 
+
+// Slide show
 const banner = document.querySelector('.banner');
-// console.log(banner);
+console.log(banner);
 const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
 
 let bannerIndex = 0;
 
-function show(i){
+function Slideshow(i){
   if(i<0)
     bannerIndex = banner.children.length - 1;
   else if(i>=banner.children.length)
     bannerIndex = 0;
   const offset = -bannerIndex * 100;
-    banner.style.transform = "translateX(" + offset + "%)";      
+    banner.style.transform = `translateX(${offset}%)`;      
 }
 
 prev.addEventListener('click', ()=>{
   bannerIndex--;
-  show(bannerIndex);
+  Slideshow(bannerIndex);
 });
 next.addEventListener('click', ()=>{
   bannerIndex++;
-  show(bannerIndex);
+  Slideshow(bannerIndex);
 });
 
 setInterval(()=>{
   bannerIndex++;
-  show(bannerIndex);
+  Slideshow(bannerIndex);
 }, 1500);
 
 
-// var img = document.querySelectorAll('.news__content_items img');
-// var content = document.querySelector('.news__content_items a');
-// var news = document.querySelectorAll('.news__content_items');
-// var img_main = document.querySelector('.newsmain__content_items img');
-// var content_main = document.querySelector('.newsmain__content_items a');
+
+
+// Show image
 var img = document.getElementById('img_main');
 var content = document.getElementById('content');
 console.log(content);
 var p = document.getElementById('p');
-
-// var indexcurrent;
-// news.addEventListener('click', function change(){
-//   img_main.src = img[indexcurrent].src;
-// });
-// img.forEach((item, index) =>
-//     item.addEventListener('click', function(){
-//         currentIndex = index;
-//         change();
-//     })
-// )
 
 function show(x){
   if(x==1){
@@ -112,8 +102,59 @@ function show(x){
     p.innerHTML = ``;
   }
   else if(x==5){
-    img.innerHTML = `<img src="img/new_5.gif" alt="">`
+    img.innerHTML = `<img src="img/new_5.jpeg" alt="">`
     content.innerHTML = `HUPGTI'shop tự tin chất lượng và sản phẩm sẽ được xuất khẩu trong năm nay`;
     p.innerHTML = ``;
   }
 }
+
+// Clock
+setInterval(function() {
+  var days = document.getElementById('day')
+  var times = document.getElementById('time')
+  var noons= document.getElementById('noon')
+  var hi= document.getElementById('hi')
+  var icon = document.getElementById('icon')
+  var frame = document.querySelector('.frame')
+
+
+  var d = new Date();
+  var day = d.getDay();
+  var hour = d.getHours();
+  var min = d.getMinutes();
+  var sec = d.getSeconds();
+  // console.log(day, hour, min, sec);
+  // console.log(d);
+  var date = [
+      "Sunday",
+      "Monday", 
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+  ]
+  
+  if(hour < 10) {
+      hour = "0" + hour;
+  }
+  if(min < 10) {
+      min = "0" + min;
+  }
+  if(sec < 10) {
+      sec = "0" + sec;
+  }
+  days.innerText = date[day];
+  days.classList.add('color');
+
+  var time = hour + ":" + min + ":" + sec;
+  // times.innerHTML = "<h1>" + time + "</h1>";
+  times.innerText =  time;
+  times.classList.add('color');
+  var check = hour>12 ? "PM" : "AM";
+  noons.innerText = check;
+  var hello = hour>12 ? "Good evening" : "Good morning"
+  hi.innerText = hello;
+  var icon_clock = hour<12 ? `<i class="fa fa-cloud-sun"></i>` : `<i class="fa fa-cloud-moon"></i>`;
+  icon.innerHTML = icon_clock;
+}, 1000)

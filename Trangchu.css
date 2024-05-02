@@ -20,14 +20,26 @@ header{
 body{
     position: relative;
 }
-.clock{
+.frame{
     position: fixed;
     top: 100px;
-    left: 100px;
-    background-color: #a35d5d;
+    left: -20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #e9d6d6;
     z-index: 9999;
-    height: 100px;
-    width: 100px;
+    height: 120px;
+    width: 200px;
+    border-radius: 5px;
+    padding: 5px;
+}
+.clock{
+    display: flex;
+    flex-direction: column;
+}
+.color{
+    color: rgb(255, 255, 255);
 }
 ::placeholder{
     font-size: 18px;
